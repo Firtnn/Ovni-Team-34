@@ -446,19 +446,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab14386c2e1248b03e98b6552f789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sizeOfSentences: 0500000002000000
   _timeScale: 0.2
   _presidentTalkTime: 0
   _translationTime: 0
+  _afterTranslationDelay: 2
+  _currentSentence: 0
+  _sentenceTestSize: 8
   _onStartPresidentDialogue:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 667490839}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 839122416}
+        m_TargetAssemblyTypeName: ClockTiming, Assembly-CSharp
+        m_MethodName: StartClock
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -466,13 +470,51 @@ MonoBehaviour:
         m_CallState: 2
   _onStartTranslation:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 839122416}
+        m_TargetAssemblyTypeName: ClockTiming, Assembly-CSharp
+        m_MethodName: StartClock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onStopPresidentDialogue:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 839122416}
+        m_TargetAssemblyTypeName: ClockTiming, Assembly-CSharp
+        m_MethodName: StopClock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onStopTranslation:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 839122416}
+        m_TargetAssemblyTypeName: ClockTiming, Assembly-CSharp
+        m_MethodName: StopClock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _sentence: 
+  _clockTiming: {fileID: 839122416}
 --- !u!4 &667490841
 Transform:
   m_ObjectHideFlags: 0
@@ -496,14 +538,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1302448791}
     m_Modifications:
-    - target: {fileID: 1532746681778476108, guid: c35743cbcd8116f4db5a89b3d18d3996, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1532746681778476108, guid: c35743cbcd8116f4db5a89b3d18d3996, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 3744584877221622860, guid: c35743cbcd8116f4db5a89b3d18d3996, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -566,7 +600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3744584877221622860, guid: c35743cbcd8116f4db5a89b3d18d3996, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 359
+      value: 478
       objectReference: {fileID: 0}
     - target: {fileID: 3744584877221622860, guid: c35743cbcd8116f4db5a89b3d18d3996, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -588,10 +622,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clock
       objectReference: {fileID: 0}
-    - target: {fileID: 6137855516989670937, guid: c35743cbcd8116f4db5a89b3d18d3996, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -602,6 +632,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3744584877221622860, guid: c35743cbcd8116f4db5a89b3d18d3996, type: 3}
   m_PrefabInstance: {fileID: 839122414}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &839122416 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7841944145273409421, guid: c35743cbcd8116f4db5a89b3d18d3996, type: 3}
+  m_PrefabInstance: {fileID: 839122414}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f64f67504ed6b4d8279d126fcfdfb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &969800217
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,8 +750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8cafb4f3822ab459b3b9330e19bb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numberOfSentences: 10
-  _symbols: []
+  sentenceManager: {fileID: 667490840}
+  _numberOfSentences: 2
 --- !u!4 &1021407338
 Transform:
   m_ObjectHideFlags: 0
@@ -774,10 +815,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

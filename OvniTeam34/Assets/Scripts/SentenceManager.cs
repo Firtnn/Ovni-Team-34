@@ -1,62 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.Rendering.DebugUI;
 
 public class SentenceManager : MonoBehaviour
 {
     private int _numberOfSymbols = 24;
-    [SerializeField] private List<int> _symbols = new List<int>();
+    private List<int> _symbols = new List<int>();
+
+    [SerializeField]private List<int> _sizeOfSentences = new List<int>();
 
     [SerializeField] private float _timeScale;
 
     [SerializeField] private float _presidentTalkTime = 0f;
     [SerializeField] private float _translationTime = 0f;
+    [SerializeField] private float _afterTranslationDelay = 2f;
 
     private float _presidentMaxTime = 1f;
     private float _translationMaxTime = 1f;
 
+    [SerializeField] private int _currentSentence = 0;
+
     private bool _isPresidentTalking = false;
     private bool _isTranslating = false;
 
-    [SerializeField] private UnityEvent _onStartPresidentDialogue;
-    [SerializeField] private UnityEvent _onStartTranslation;
-    [SerializeField] private UnityEvent _onStopPresidentDialogue;
-    [SerializeField] private UnityEvent _onStopTranslation;
+    [SerializeField] private int _sentenceTestSize;
 
-    [SerializeField] private List<int> _sentence = new List<int>();
+    [Header("Events")]
+    [Space(20)]
+    public UnityEvent _onStartPresidentDialogue;
+    public  UnityEvent _onStartTranslation;
+    public  UnityEvent _onStopPresidentDialogue;
+    public  UnityEvent _onStopTranslation;
+    public  List<int> _sentence = new List<int>();
 
-    private GameManager gameManager;
-    private void Awake()
-    {
-        gameManager = GameManager.Instance;
-    }
+    public ClockTiming _clockTiming;
+
     void Start()
     {
         for (int i = 0; i < _numberOfSymbols; i++)
         {
             _symbols.Add(i);
         }
-        _sentence = GenerateSentence(5);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_presidentTalkTime <= _presidentMaxTime && _isPresidentTalking)
+        if (_isPresidentTalking)
         {
             _presidentTalkTime += Time.deltaTime * _timeScale;
+            _clockTiming.SetClock(_presidentTalkTime);
         }
-        if (_translationTime <= _translationMaxTime && _isTranslating)
+        else
+        {
+            _presidentTalkTime = 0f;
+        }
+        if (_isTranslating)
         {
             _translationTime += Time.deltaTime * _timeScale;
+            _clockTiming.SetClock(_translationTime);
+        }
+        else
+        {
+            _translationTime = 0f;
         }
     }
 
-    public void StartPresidentDialogue()
+    public void StartPresidentDialogue(int sentenceSize)
     {
         _onStartPresidentDialogue.Invoke();
+        GenerateSentence(sentenceSize);
         _isPresidentTalking = true;
     }
 
@@ -77,26 +92,36 @@ public class SentenceManager : MonoBehaviour
         _isTranslating = false;
     }
 
-    public void TranslatorDialogue()
+    public void GenerateSentence(int sentenceSize)
     {
-        StartCoroutine(PrintingTranslationDelay());
-    }
-
-    public List<int> GenerateSentence(int sentenceSize)
-    {
-        List<int> sentence = new List<int>();
+        _sentence.Clear();
         for (int i = 0; i < sentenceSize; i++)
         {
 
             int index = Random.Range(_symbols.Count - 1, 0);
             int symbol = _symbols[index];
-            sentence.Add(symbol);
+            _sentence.Add(symbol);
         }
-        return sentence;
     }
 
-    IEnumerator PrintingTranslationDelay()
+    public void GlobalLoop(int numberOfTime)
     {
-        yield return new WaitForSeconds(2f);
+        StartCoroutine(GlobaLoopCoroutine(numberOfTime));
+    }
+    IEnumerator GlobaLoopCoroutine(int number)
+    {
+        StartPresidentDialogue(_sizeOfSentences[_currentSentence]);
+        yield return new WaitForSeconds(_presidentMaxTime/_timeScale);
+        StopPresidentDialogue();
+        StartTranslation();
+        yield return new WaitForSeconds(_translationMaxTime/ _timeScale);
+        StopTranslation();
+        yield return new WaitForSeconds(_afterTranslationDelay);
+        if (_currentSentence < number - 1)
+        {
+            Debug.Log(number);
+            _currentSentence += 1;
+            yield return GlobaLoopCoroutine(number);
+        }
     }
 }

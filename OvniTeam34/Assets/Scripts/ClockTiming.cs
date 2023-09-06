@@ -17,7 +17,7 @@ public class ClockTiming : MonoBehaviour
         SetMatFloat(_clockTimeAmount, remainingTime);
     }
 
-    public void RestartClock()
+    public void StartClock()
     {
         if (_isOver)
         {
