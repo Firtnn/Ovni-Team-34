@@ -342,6 +342,77 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &667490839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 667490841}
+  - component: {fileID: 667490840}
+  m_Layer: 0
+  m_Name: SentenceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &667490840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667490839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678ab14386c2e1248b03e98b6552f789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeScale: 0.2
+  _presidentTalkTime: 0
+  _translationTime: 0
+  _onStartPresidentDialogue:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 667490839}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onStartTranslation:
+    m_PersistentCalls:
+      m_Calls: []
+  _onStopPresidentDialogue:
+    m_PersistentCalls:
+      m_Calls: []
+  _onStopTranslation:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &667490841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667490839}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.21689996, y: -0.05993876, z: 2.8599792}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &796859447
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c643de386d89e042a385301fabfd9bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerInput: {fileID: 0}
 --- !u!114 &969800221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,6 +580,52 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1 &1021407336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1021407338}
+  - component: {fileID: 1021407337}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1021407337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021407336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8cafb4f3822ab459b3b9330e19bb68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numberOfSentences: 10
+  _symbols: []
+--- !u!4 &1021407338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021407336}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.21689996, y: -0.05993876, z: 2.8599792}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1302448787
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f64f67504ed6b4d8279d126fcfdfb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clockImage: {fileID: 0}
 --- !u!1 &2033465075
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,3 +895,5 @@ SceneRoots:
   - {fileID: 2033465078}
   - {fileID: 1302448791}
   - {fileID: 969800219}
+  - {fileID: 1021407338}
+  - {fileID: 667490841}
