@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class SentenceManager : MonoBehaviour
 {
-    private GameManager gameManager;
-
-    private int _numberOfSymbolsInSentence;
+    private int _numberOfSymbols = 24;
+    [SerializeField] private List<int> _symbols = new List<int>();
 
     [SerializeField] private float _timeScale;
 
@@ -20,21 +20,25 @@ public class SentenceManager : MonoBehaviour
     private bool _isPresidentTalking = false;
     private bool _isTranslating = false;
 
-
     [SerializeField] private UnityEvent _onStartPresidentDialogue;
     [SerializeField] private UnityEvent _onStartTranslation;
     [SerializeField] private UnityEvent _onStopPresidentDialogue;
     [SerializeField] private UnityEvent _onStopTranslation;
 
-    //private List<int> _symbolsInSentence = new List<int>();
+    [SerializeField] private List<int> _sentence = new List<int>();
 
-    // Start is called before the first frame update
+    private GameManager gameManager;
     private void Awake()
     {
         gameManager = GameManager.Instance;
     }
     void Start()
     {
+        for (int i = 0; i < _numberOfSymbols; i++)
+        {
+            _symbols.Add(i);
+        }
+        _sentence = GenerateSentence(5);
     }
 
     // Update is called once per frame
@@ -78,14 +82,17 @@ public class SentenceManager : MonoBehaviour
         StartCoroutine(PrintingTranslationDelay());
     }
 
-    public void GenerateSentence(int sentenceSize)
+    public List<int> GenerateSentence(int sentenceSize)
     {
         List<int> sentence = new List<int>();
         for (int i = 0; i < sentenceSize; i++)
         {
-            //int symbol =
-            //sentence.Add(symbol);
+
+            int index = Random.Range(_symbols.Count - 1, 0);
+            int symbol = _symbols[index];
+            sentence.Add(symbol);
         }
+        return sentence;
     }
 
     IEnumerator PrintingTranslationDelay()
