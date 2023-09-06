@@ -150,7 +150,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10805317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -460,7 +460,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644311344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -538,9 +538,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab14386c2e1248b03e98b6552f789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sizeOfSentences: 
   _timeScale: 0.2
   _presidentTalkTime: 0
   _translationTime: 0
+  _afterTranslationDelay: 2
+  _currentSentence: 0
+  _sentenceTestSize: 0
   _onStartPresidentDialogue:
     m_PersistentCalls:
       m_Calls:
@@ -565,6 +569,8 @@ MonoBehaviour:
   _onStopTranslation:
     m_PersistentCalls:
       m_Calls: []
+  _sentence: 
+  _clockTiming: {fileID: 0}
 --- !u!4 &667490841
 Transform:
   m_ObjectHideFlags: 0
@@ -658,11 +664,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3744584877221622860, guid: c35743cbcd8116f4db5a89b3d18d3996, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 359
+      value: 351
       objectReference: {fileID: 0}
     - target: {fileID: 3744584877221622860, guid: c35743cbcd8116f4db5a89b3d18d3996, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 181
+      value: 238
       objectReference: {fileID: 0}
     - target: {fileID: 3744584877221622860, guid: c35743cbcd8116f4db5a89b3d18d3996, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -805,8 +811,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8cafb4f3822ab459b3b9330e19bb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sentenceManager: {fileID: 0}
   _numberOfSentences: 10
-  _symbols: []
 --- !u!4 &1021407338
 Transform:
   m_ObjectHideFlags: 0
