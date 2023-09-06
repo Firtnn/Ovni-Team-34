@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
 public class SentenceManager : MonoBehaviour
 {
     private int _numberOfSymbols = 24;
     private List<int> _symbols = new List<int>();
+    //private List<Image> _symbols = new List<Image>();
 
     [SerializeField]private List<int> _sizeOfSentences = new List<int>();
 
@@ -27,20 +29,25 @@ public class SentenceManager : MonoBehaviour
 
     [SerializeField] private int _sentenceTestSize;
 
+    //[SerializeField] private Image _testImage;
+
     [Header("Events")]
     [Space(20)]
     public UnityEvent _onStartPresidentDialogue;
     public  UnityEvent _onStartTranslation;
     public  UnityEvent _onStopPresidentDialogue;
     public  UnityEvent _onStopTranslation;
-    public  List<int> _sentence = new List<int>();
 
-    public ClockTiming _clockTiming;
+    public  List<int> _sentence = new List<int>();
+    //[SerializeField] private List<Image> _sentence = new List<Image>();
+
+    [SerializeField] private ClockTiming _clockTiming;
 
     void Start()
     {
         for (int i = 0; i < _numberOfSymbols; i++)
         {
+            //_symbols.Add(_testImage);
             _symbols.Add(i);
         }
     }
@@ -99,6 +106,7 @@ public class SentenceManager : MonoBehaviour
         {
 
             int index = Random.Range(_symbols.Count - 1, 0);
+            //Image symbol = _symbols[index];
             int symbol = _symbols[index];
             _sentence.Add(symbol);
         }

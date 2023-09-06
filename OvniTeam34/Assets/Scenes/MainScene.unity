@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678ab14386c2e1248b03e98b6552f789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sizeOfSentences: 0500000002000000
+  _sizeOfSentences: 010000000200000003000000040000000500000003000000040000000300000004000000050000000600000008000000
   _timeScale: 0.2
   _presidentTalkTime: 0
   _translationTime: 0
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sentenceManager: {fileID: 667490840}
-  _numberOfSentences: 2
+  _numberOfSentences: 12
 --- !u!4 &1021407338
 Transform:
   m_ObjectHideFlags: 0
