@@ -5,6 +5,6 @@ using UnityEngine.UI;
 public class SymboleScriptableData : ScriptableObject
 {
     public int[] symboleIndex;
-    public Image[] _logo;
+    public Sprite[] _logo;
     
 }

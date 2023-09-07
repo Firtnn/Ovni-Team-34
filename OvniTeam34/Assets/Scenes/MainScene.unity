@@ -519,6 +519,7 @@ MonoBehaviour:
   _translationTime: 0
   _afterTranslationDelay: 1
   _currentSentence: 0
+  _isTranslating: 0
   _sentenceTestSize: 8
   _onStartPresidentDialogue:
     m_PersistentCalls:
@@ -628,7 +629,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _sentence: 
+  _tradSentence: 
+  _presSentence: 
   _correctSentence:
   - Chers extra, chers terrestre
   - "Un objet volant gravite autour de notre belle plan\xE9te"
@@ -980,6 +982,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5922558131304659119, guid: 230478dc2b96c40408f1c2236f448b29, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 8409b50173b97a749b2cfcea65fd0655, type: 2}
+    - target: {fileID: 5922558131304659119, guid: 230478dc2b96c40408f1c2236f448b29, type: 3}
       propertyPath: _delay
       value: 0.5
       objectReference: {fileID: 0}
@@ -987,6 +993,10 @@ PrefabInstance:
       propertyPath: _horizontalGroup
       value: 
       objectReference: {fileID: 38829338}
+    - target: {fileID: 5922558131304659119, guid: 230478dc2b96c40408f1c2236f448b29, type: 3}
+      propertyPath: _sentenceManager
+      value: 
+      objectReference: {fileID: 667490840}
     - target: {fileID: 5922558131304659119, guid: 230478dc2b96c40408f1c2236f448b29, type: 3}
       propertyPath: _borderDialogueImage
       value: 
@@ -1235,6 +1245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentenceManager: {fileID: 667490840}
   _numberOfSentences: 12
+  _tradDialogueBox: {fileID: 1795242645}
 --- !u!4 &1021407338
 Transform:
   m_ObjectHideFlags: 0
@@ -1657,6 +1668,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1687417372724109580, guid: c440f5e5f35972b45883e9655caa6685, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 8409b50173b97a749b2cfcea65fd0655, type: 2}
+    - target: {fileID: 1687417372724109580, guid: c440f5e5f35972b45883e9655caa6685, type: 3}
       propertyPath: _boxHeight
       value: 150
       objectReference: {fileID: 0}
@@ -1664,6 +1679,10 @@ PrefabInstance:
       propertyPath: _horizontalGroup
       value: 
       objectReference: {fileID: 889991563}
+    - target: {fileID: 1687417372724109580, guid: c440f5e5f35972b45883e9655caa6685, type: 3}
+      propertyPath: _sentenceManager
+      value: 
+      objectReference: {fileID: 667490840}
     - target: {fileID: 1687417372724109580, guid: c440f5e5f35972b45883e9655caa6685, type: 3}
       propertyPath: _borderDialogueImage
       value: 

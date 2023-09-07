@@ -28,7 +28,14 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] private RectTransform _horizontalGroup;
     [SerializeField] private float[] _horizontalSpacing;
     [SerializeField] private float[] _horizontalPos;
+    [HideInInspector] public bool _isTradFull = false;
+    private int _currentTradNumber;
 
+    [SerializeField] private SentenceManager _sentenceManager;
+
+    [SerializeField] private SymboleScriptableData _data;
+
+    private int _indexTradSymbol = 0;
  
     private Coroutine _currentCoroutine;
     private void Start()
@@ -60,6 +67,7 @@ public class DialogueBox : MonoBehaviour
 
     public void SetTradUI(int numberOfSymbol)
     {
+        _indexTradSymbol = 0;
         FadeIn();
         InitializeBox(numberOfSymbol);
         SetTradHorizontalGroup(numberOfSymbol);
@@ -80,19 +88,20 @@ public class DialogueBox : MonoBehaviour
         _horizontalGroup.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 1] ,_boxHeight);
         _horizontalGroup.localPosition = new Vector2(_horizontalPos[numberOfSymbol - 1], -45);
         _horizontalGroup.GetComponent<HorizontalLayoutGroup>().spacing = _horizontalSpacing[numberOfSymbol - 1];
-
+    
         
         for (int i = 0; i < _symboles.Length; i++)
         {
             if (i <= numberOfSymbol)
             {
                 _symboles[i].symbolVFX.FadeInSymbol();
+                _symboles[i].InitializeSymboleData(_sentenceManager._presSentence[i], _data._logo[_sentenceManager._presSentence[i]]);
             }
             else
             {
                 _symboles[i].symbolVFX.FadeOut();
             }
-            
+
         }
         
     }
@@ -102,9 +111,38 @@ public class DialogueBox : MonoBehaviour
         _horizontalGroup.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 1] ,_boxHeight);
         _horizontalGroup.localPosition = new Vector2(_horizontalPos[numberOfSymbol - 1], -45);
         _horizontalGroup.GetComponent<HorizontalLayoutGroup>().spacing = _horizontalSpacing[numberOfSymbol - 1];
-            
+        _isTradFull = false;
+        _sentenceManager.IsTranslationCorrect = true;
+        _currentTradNumber = numberOfSymbol;
+
     }
 
+    public void SetCurrentTradSymbol(int keyNumber)
+    {
+        Debug.Log(keyNumber);
+        Debug.Log(_indexTradSymbol);
+        Debug.Log(_currentTradNumber);
+        
+        _symboles[_indexTradSymbol].InitializeSymboleData(keyNumber, _data._logo[keyNumber]);
+        _symboles[_indexTradSymbol].symbolVFX.FadeInSymbol();
+        if (keyNumber != _sentenceManager._presSentence[_currentTradNumber])
+        {
+            _sentenceManager.IsTranslationCorrect = false;
+        }
+        _indexTradSymbol++;
+    }
+
+
+   
+
+    public void CheckIsFull()
+    {
+        if (_indexTradSymbol > _currentTradNumber)
+        {
+            _isTradFull = true;
+        }
+        
+    }
 
     
     
@@ -127,12 +165,5 @@ public class DialogueBox : MonoBehaviour
         }
         
     }
-
-
-  
-
-    public void TraductionSymbole()
-    {
-        
-    }
+    
 }

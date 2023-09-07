@@ -12,7 +12,7 @@ public class SentenceManager : MonoBehaviour
 
     [SerializeField] private DialogueBox _presDialogueBox;
     [SerializeField] private DialogueBox _tradDialogueBox;
-    //private List<Image> _symbols = new List<Image>();
+    public bool IsTranslationCorrect;
 
     [SerializeField]private List<int> _sizeOfSentences = new List<int>();
 
@@ -28,7 +28,7 @@ public class SentenceManager : MonoBehaviour
     [SerializeField] private int _currentSentence = 0;
 
     private bool _isPresidentTalking = false;
-    private bool _isTranslating = false;
+    [HideInInspector] public bool _isTranslating = false;
 
     [SerializeField] private int _sentenceTestSize;
 
@@ -41,7 +41,8 @@ public class SentenceManager : MonoBehaviour
     public  UnityEvent _onStopPresidentDialogue;
     public  UnityEvent _onStopTranslation;
 
-    public  List<int> _sentence = new List<int>();
+    public  List<int> _tradSentence = new List<int>();
+    public  List<int> _presSentence = new List<int>();
     //[SerializeField] private List<Image> _sentence = new List<Image>();
     [SerializeField] private string[] _correctSentence;
     [SerializeField] private string[] _wrongSentence;
@@ -108,14 +109,14 @@ public class SentenceManager : MonoBehaviour
 
     public void GenerateSentence(int sentenceSize)
     {
-        _sentence.Clear();
+        _presSentence.Clear();
         for (int i = 0; i < sentenceSize; i++)
         {
 
             int index = Random.Range(_symbols.Count - 1, 0);
             //Image symbol = _symbols[index];
             int symbol = _symbols[index];
-            _sentence.Add(symbol);
+            _presSentence.Add(symbol);
         }
     }
 
@@ -131,7 +132,9 @@ public class SentenceManager : MonoBehaviour
         StartTranslation(_sizeOfSentences[_currentSentence]);
         yield return new WaitForSeconds(_translationMaxTime/ _timeScale);
         StopTranslation();
+        Debug.Log(IsTranslationCorrect);
         yield return new WaitForSeconds(_afterTranslationDelay);
+        
         if (_currentSentence < number - 1)
         {
             Debug.Log(number);
