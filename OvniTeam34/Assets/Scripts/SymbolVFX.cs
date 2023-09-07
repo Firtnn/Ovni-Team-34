@@ -19,6 +19,11 @@ public class SymbolVFX : MonoBehaviour
     private void Awake()
     {
         _symboleMat = _symboleImage.material;
+        FadeOut();
+    }
+
+    public void FadeOut()
+    {
         _symboleMat.SetFloat(_lerpAmount, 0);
     }
 

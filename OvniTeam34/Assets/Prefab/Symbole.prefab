@@ -176,5 +176,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _imageSymbole: {fileID: 0}
-  _symbolVFX: {fileID: 1144931177002938039}
+  symbolVFX: {fileID: 1144931177002938039}
   Index: 0

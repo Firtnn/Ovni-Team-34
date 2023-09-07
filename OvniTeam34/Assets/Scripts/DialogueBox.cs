@@ -25,6 +25,9 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] private RectTransform[] _symbolePos;
     [SerializeField] private float _delay;
     [SerializeField] private Symbole[] _symboles;
+    [SerializeField] private RectTransform _horizontalGroup;
+    [SerializeField] private float[] _horizontalSpacing;
+    [SerializeField] private float[] _horizontalPos;
 
  
     private Coroutine _currentCoroutine;
@@ -56,10 +59,37 @@ public class DialogueBox : MonoBehaviour
             _currentCoroutine = StartCoroutine(SetSymbolePos(numberOfSymbol));
         }
         */
-        SetSymbolePos(numberOfSymbol);
+        //SetSymbolePos(numberOfSymbol);
+        SetHorizontalGroup(numberOfSymbol);
     }
-    
 
+
+
+    private void SetHorizontalGroup(int numberOfSymbol)
+    {
+        _horizontalGroup.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 1] ,_boxHeight);
+        _horizontalGroup.localPosition = new Vector2(_horizontalPos[numberOfSymbol - 1], -45);
+        _horizontalGroup.GetComponent<HorizontalLayoutGroup>().spacing = _horizontalSpacing[numberOfSymbol - 1];
+
+        
+        for (int i = 0; i < _symboles.Length; i++)
+        {
+            if (i <= numberOfSymbol)
+            {
+                _symboles[i].symbolVFX.FadeInSymbol();
+            }
+            else
+            {
+                _symboles[i].symbolVFX.FadeOut();
+            }
+            
+        }
+        
+    }
+
+
+    
+    
     private void SetSymbolePos(int numberOfSymbol)
     {
         _startPos.localPosition = new Vector3(_lStartPos[numberOfSymbol], _startPos.position.y, 0);
@@ -74,8 +104,7 @@ public class DialogueBox : MonoBehaviour
             {
                 _symbolePos[i].localPosition = new Vector3(Mathf.Lerp(_startPos.localPosition.x, _endPos.localPosition.x, 0), _symbolePos[i].position.y, 0); 
             }
-            Debug.Log(_symboles[i]);
-            Debug.Log(_symboles[i].symbolVFX);
+            
             _symboles[i].symbolVFX.FadeInSymbol();
         }
         
