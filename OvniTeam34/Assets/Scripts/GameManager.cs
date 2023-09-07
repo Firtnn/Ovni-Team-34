@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private GameObject _menuIntroUI;
     private GameObject _clock;
     private GameObject _presBox;
+    private GameObject _tradBox;
 
     private List<int> _symbolsInBubble = new List<int>();
 
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         _menuIntroUI = GameObject.Find("IntroMenu");
         _clock = GameObject.Find("Clock");
         _presBox = GameObject.Find("PresBox");
+        _tradBox = GameObject.Find("TradBox");
         _presBox.SetActive(false);
         _clock.SetActive(false);
     }
