@@ -210,8 +210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19217efe7d718c4eac55bd56876d03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Index: 0
   _imageSymbole: {fileID: 0}
+  symbolVFX: {fileID: 0}
+  Index: 0
 --- !u!1 &1088260249546636464
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4894698ed0a0d7408682bee2f22202e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _borderImage: {fileID: 6030699781135981449}
+  _borderDialogueImage: {fileID: 0}
   _transitionDuration: 0.5
   _boxHeight: 200
   _boxWidth:
@@ -338,6 +339,8 @@ MonoBehaviour:
   - {fileID: 4284906309162322332}
   - {fileID: 2803233935823956204}
   - {fileID: 3172407407253501971}
+  _delay: 0
+  _symboles: []
 --- !u!1 &1890554378676499559
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,8 +516,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19217efe7d718c4eac55bd56876d03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Index: 0
   _imageSymbole: {fileID: 0}
+  symbolVFX: {fileID: 0}
+  Index: 0
 --- !u!1 &4621770094303963108
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,8 +694,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19217efe7d718c4eac55bd56876d03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Index: 0
   _imageSymbole: {fileID: 0}
+  symbolVFX: {fileID: 0}
+  Index: 0
 --- !u!1 &5386976659179058971
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,8 +872,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19217efe7d718c4eac55bd56876d03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Index: 0
   _imageSymbole: {fileID: 0}
+  symbolVFX: {fileID: 0}
+  Index: 0
 --- !u!1 &6130287425597205263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,8 +1085,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19217efe7d718c4eac55bd56876d03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Index: 0
   _imageSymbole: {fileID: 0}
+  symbolVFX: {fileID: 0}
+  Index: 0
 --- !u!1 &8188253896561754098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,5 +1263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19217efe7d718c4eac55bd56876d03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Index: 0
   _imageSymbole: {fileID: 0}
+  symbolVFX: {fileID: 0}
+  Index: 0
