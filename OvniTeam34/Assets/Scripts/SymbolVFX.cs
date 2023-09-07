@@ -15,6 +15,7 @@ public class SymbolVFX : MonoBehaviour
     [SerializeField] private Image _symboleImage;
     private Material _symboleMat;
     private int _lerpAmount = Shader.PropertyToID("_Amount");
+    [SerializeField] private ParticleSystem _impactSymbole; 
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class SymbolVFX : MonoBehaviour
     public void FadeInSymbol()
     {
         StartCoroutine(LerpThis());
+        //_impactSymbole.transform.localPosition = 
     }
 
     private IEnumerator LerpThis()

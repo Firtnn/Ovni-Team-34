@@ -21,6 +21,8 @@ public class SentenceManager : MonoBehaviour
     [SerializeField] private float _presidentTalkTime = 0f;
     [SerializeField] private float _translationTime = 0f;
     [SerializeField] private float _afterTranslationDelay = 2f;
+    [SerializeField] private GameObject _clock;
+    [SerializeField] private Vector2[] _clockPos;
 
     private float _presidentMaxTime = 1f;
     private float _translationMaxTime = 1f;
@@ -133,6 +135,11 @@ public class SentenceManager : MonoBehaviour
             int symbol = _symbols[index];
             _presSentence.Add(symbol);
         }
+    }
+
+    public void SetClockPosition(int index)
+    {
+        _clock.transform.localPosition = new Vector3(_clockPos[index].x, _clockPos[index].y, -1f);
     }
 
     public void GlobalLoop(int numberOfTime)
