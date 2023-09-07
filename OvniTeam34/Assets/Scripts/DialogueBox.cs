@@ -74,7 +74,9 @@ public class DialogueBox : MonoBehaviour
             {
                 _symbolePos[i].localPosition = new Vector3(Mathf.Lerp(_startPos.localPosition.x, _endPos.localPosition.x, 0), _symbolePos[i].position.y, 0); 
             }
-            _symboles[i]._symbolVFX.FadeInSymbol();
+            Debug.Log(_symboles[i]);
+            Debug.Log(_symboles[i].symbolVFX);
+            _symboles[i].symbolVFX.FadeInSymbol();
         }
         
     }

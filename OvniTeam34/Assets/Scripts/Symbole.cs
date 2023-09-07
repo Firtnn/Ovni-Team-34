@@ -11,7 +11,7 @@ public class Symbole : MonoBehaviour
     [SerializeField] private Image _imageSymbole;
 
     
-    [HideInInspector] public SymbolVFX _symbolVFX;
+    public SymbolVFX symbolVFX;
     
     public int Index;
     
@@ -25,7 +25,7 @@ public class Symbole : MonoBehaviour
 
     private void Start()
     {
-        _symbolVFX = GetComponent<SymbolVFX>();
+        symbolVFX = GetComponent<SymbolVFX>();
     }
 
     public void InitializeSymboleData(int index, Sprite sprite)

@@ -559,6 +559,36 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _sentence: 
+  _correctSentence:
+  - Chers extra, chers terrestre
+  - "Un objet volant gravite autour de notre belle plan\xE9te"
+  - "Nous ne connaissons pas le but de cet objet ni si des r\xE9sidents occupent
+    cet com\xE9te"
+  - "Nous nous devons d'agir quitte \xE0 en subir les cons\xE9quences, la d\xE9faite
+    n'est pas permise"
+  - J'entend votre peur mais n'ayez crainte
+  - "Nous avons r\xE9uni de nouveau \xE9l\xE9ment tel que la Terre pour combattre
+    avec nous cette menace"
+  - "Nous avons mobilis\xE9s \xE0 travers tout l'espace plus d'un millard de soldats"
+  - "Ainsi que le minist\xE8re de la dD\xE9fense Galactique prete \xE0 d\xE9ployer
+    les moyens extremes"
+  - Nous sommes en guerre
+  - Soyez en certain que nous gagnerons
+  - Mes chers compatriotes, la fin du cauchemar se termine maintenant
+  - Au revoir
+  _wrongSentence:
+  - "Chers d\xE9biles, zigoto"
+  - "Un v\xE9lo survole la piscine municipal de la ville"
+  - "Le proprietaire du v\xE9lo veut juste faire la fete"
+  - Nous pouvons aller dormir sans crainte ni danger
+  - J'apprecie votre joie et votre impatiance
+  - "Nous n'allons pas d\xE9ployer d'arme face \xE0 cet amusement"
+  - "Au contraire,j'ai convoqu\xE9 plusieurs ogives festives"
+  - De meme que la venue de citoyens de d'autres dimensions
+  - Paix et Amour
+  - "Amusez vous et profit\xE9"
+  - 'Mes amis, que la fete commence '
+  - Des bisous
   _clockTiming: {fileID: 839122416}
 --- !u!4 &667490841
 Transform:
