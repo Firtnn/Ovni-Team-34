@@ -85,14 +85,14 @@ public class DialogueBox : MonoBehaviour
 
     private void SetPresHorizontalGroup(int numberOfSymbol)
     {
-        _horizontalGroup.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 1] ,_boxHeight);
-        _horizontalGroup.localPosition = new Vector2(_horizontalPos[numberOfSymbol - 1], -45);
-        _horizontalGroup.GetComponent<HorizontalLayoutGroup>().spacing = _horizontalSpacing[numberOfSymbol - 1];
+        _horizontalGroup.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 2] ,_boxHeight);
+        _horizontalGroup.localPosition = new Vector2(_horizontalPos[numberOfSymbol - 2], -45);
+        _horizontalGroup.GetComponent<HorizontalLayoutGroup>().spacing = _horizontalSpacing[numberOfSymbol - 2];
     
         
         for (int i = 0; i < _symboles.Length; i++)
         {
-            if (i <= numberOfSymbol)
+            if (i < numberOfSymbol)
             {
                 _symboles[i].symbolVFX.FadeInSymbol();
                 _symboles[i].InitializeSymboleData(_sentenceManager._presSentence[i], _data._logo[_sentenceManager._presSentence[i]]);
@@ -108,9 +108,9 @@ public class DialogueBox : MonoBehaviour
     
     private void SetTradHorizontalGroup(int numberOfSymbol)
     {
-        _horizontalGroup.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 1] ,_boxHeight);
-        _horizontalGroup.localPosition = new Vector2(_horizontalPos[numberOfSymbol - 1], -45);
-        _horizontalGroup.GetComponent<HorizontalLayoutGroup>().spacing = _horizontalSpacing[numberOfSymbol - 1];
+        _horizontalGroup.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 2] ,_boxHeight);
+        _horizontalGroup.localPosition = new Vector2(_horizontalPos[numberOfSymbol - 2], -45);
+        _horizontalGroup.GetComponent<HorizontalLayoutGroup>().spacing = _horizontalSpacing[numberOfSymbol - 2];
         _isTradFull = false;
         _sentenceManager.IsTranslationCorrect = true;
         _currentTradNumber = numberOfSymbol;
@@ -120,16 +120,14 @@ public class DialogueBox : MonoBehaviour
     public void SetCurrentTradSymbol(int keyNumber)
     {
         Debug.Log(keyNumber);
-        Debug.Log(_indexTradSymbol);
-        Debug.Log(_currentTradNumber);
-        
         _symboles[_indexTradSymbol].InitializeSymboleData(keyNumber, _data._logo[keyNumber]);
         _symboles[_indexTradSymbol].symbolVFX.FadeInSymbol();
-        if (keyNumber != _sentenceManager._presSentence[_currentTradNumber])
+        if (keyNumber != _sentenceManager._presSentence[_indexTradSymbol])
         {
             _sentenceManager.IsTranslationCorrect = false;
         }
         _indexTradSymbol++;
+        
     }
 
 
@@ -137,33 +135,12 @@ public class DialogueBox : MonoBehaviour
 
     public void CheckIsFull()
     {
-        if (_indexTradSymbol > _currentTradNumber)
+        if (_indexTradSymbol >= _currentTradNumber)
         {
             _isTradFull = true;
         }
         
     }
 
-    
-    
-    private void SetSymbolePos(int numberOfSymbol)
-    {
-        _startPos.localPosition = new Vector3(_lStartPos[numberOfSymbol], _startPos.position.y, 0);
-        _endPos.localPosition = new Vector3(_lEndPos[numberOfSymbol], _startPos.position.y, 0);
-        for (int i = 0; i < numberOfSymbol; i++)
-        {
-            if (i != 0)
-            {
-                _symbolePos[i].localPosition = new Vector3(Mathf.Lerp(_startPos.localPosition.x, _endPos.localPosition.x, i/(numberOfSymbol - 1)), _symbolePos[i].position.y, 0); 
-            }
-            else
-            {
-                _symbolePos[i].localPosition = new Vector3(Mathf.Lerp(_startPos.localPosition.x, _endPos.localPosition.x, 0), _symbolePos[i].position.y, 0); 
-            }
-            
-            _symboles[i].symbolVFX.FadeInSymbol();
-        }
-        
-    }
     
 }
