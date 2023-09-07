@@ -34,9 +34,6 @@ public class DialogueBox : MonoBehaviour
     private void Start()
     {
         _borderDialogueImage.material.SetFloat(_fadeIn, -0.4f);
-        //SetDialogueUI(2);
-        
-        
     }
     
     private void InitializeBox(int numberOfSymbol)
@@ -48,24 +45,37 @@ public class DialogueBox : MonoBehaviour
     {
         _borderDialogueImage.material.DOFloat(1, _fadeIn, 0.5f);
     }
+    
+    public void FadeOut()
+    {
+        _borderDialogueImage.material.DOFloat(-0.4f, _fadeIn, 0.5f);
+    }
 
     public void SetDialogueUI(int numberOfSymbol)
     {
         FadeIn();
         InitializeBox(numberOfSymbol);
-        /*
-        if (_currentCoroutine == null)
+        SetPresHorizontalGroup(numberOfSymbol);
+    }
+
+    public void SetTradUI(int numberOfSymbol)
+    {
+        FadeIn();
+        InitializeBox(numberOfSymbol);
+        SetTradHorizontalGroup(numberOfSymbol);
+    }
+
+    public void FadeOutSymbols()
+    {
+        for (int i = 0; i < _symboles.Length; i++)
         {
-            _currentCoroutine = StartCoroutine(SetSymbolePos(numberOfSymbol));
+            _symboles[i].symbolVFX.FadeOut();
         }
-        */
-        //SetSymbolePos(numberOfSymbol);
-        SetHorizontalGroup(numberOfSymbol);
     }
 
 
 
-    private void SetHorizontalGroup(int numberOfSymbol)
+    private void SetPresHorizontalGroup(int numberOfSymbol)
     {
         _horizontalGroup.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 1] ,_boxHeight);
         _horizontalGroup.localPosition = new Vector2(_horizontalPos[numberOfSymbol - 1], -45);
@@ -85,6 +95,14 @@ public class DialogueBox : MonoBehaviour
             
         }
         
+    }
+    
+    private void SetTradHorizontalGroup(int numberOfSymbol)
+    {
+        _horizontalGroup.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 1] ,_boxHeight);
+        _horizontalGroup.localPosition = new Vector2(_horizontalPos[numberOfSymbol - 1], -45);
+        _horizontalGroup.GetComponent<HorizontalLayoutGroup>().spacing = _horizontalSpacing[numberOfSymbol - 1];
+            
     }
 
 

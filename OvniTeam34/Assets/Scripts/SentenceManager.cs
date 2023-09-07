@@ -10,7 +10,8 @@ public class SentenceManager : MonoBehaviour
     private int _numberOfSymbols = 24;
     private List<int> _symbols = new List<int>();
 
-    [SerializeField] private DialogueBox _dialogueBox;
+    [SerializeField] private DialogueBox _presDialogueBox;
+    [SerializeField] private DialogueBox _tradDialogueBox;
     //private List<Image> _symbols = new List<Image>();
 
     [SerializeField]private List<int> _sizeOfSentences = new List<int>();
@@ -84,7 +85,7 @@ public class SentenceManager : MonoBehaviour
         _onStartPresidentDialogue.Invoke();
         GenerateSentence(sentenceSize);
         _isPresidentTalking = true;
-        _dialogueBox.SetDialogueUI(sentenceSize);
+        _presDialogueBox.SetDialogueUI(sentenceSize);
     }
 
     public void StopPresidentDialogue()
@@ -92,9 +93,10 @@ public class SentenceManager : MonoBehaviour
         _onStopPresidentDialogue.Invoke();
         _isPresidentTalking = false;
     }
-    public void StartTranslation()
+    public void StartTranslation(int sentenceSize)
     {
         _onStartTranslation.Invoke();
+        _tradDialogueBox.SetTradUI(sentenceSize);
         _isTranslating = true;
     }
 
@@ -126,7 +128,7 @@ public class SentenceManager : MonoBehaviour
         StartPresidentDialogue(_sizeOfSentences[_currentSentence]);
         yield return new WaitForSeconds(_presidentMaxTime/_timeScale);
         StopPresidentDialogue();
-        StartTranslation();
+        StartTranslation(_sizeOfSentences[_currentSentence]);
         yield return new WaitForSeconds(_translationMaxTime/ _timeScale);
         StopTranslation();
         yield return new WaitForSeconds(_afterTranslationDelay);
