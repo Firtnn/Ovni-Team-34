@@ -9,6 +9,8 @@ public class SentenceManager : MonoBehaviour
 {
     private int _numberOfSymbols = 24;
     private List<int> _symbols = new List<int>();
+
+    [SerializeField] private DialogueBox _dialogueBox;
     //private List<Image> _symbols = new List<Image>();
 
     [SerializeField]private List<int> _sizeOfSentences = new List<int>();
@@ -40,7 +42,9 @@ public class SentenceManager : MonoBehaviour
 
     public  List<int> _sentence = new List<int>();
     //[SerializeField] private List<Image> _sentence = new List<Image>();
-
+    [SerializeField] private string[] _correctSentence;
+    [SerializeField] private string[] _wrongSentence;
+    
     [SerializeField] private ClockTiming _clockTiming;
 
     void Start()
@@ -80,6 +84,7 @@ public class SentenceManager : MonoBehaviour
         _onStartPresidentDialogue.Invoke();
         GenerateSentence(sentenceSize);
         _isPresidentTalking = true;
+        _dialogueBox.SetDialogueUI(sentenceSize);
     }
 
     public void StopPresidentDialogue()

@@ -13,11 +13,13 @@ public class SymbolVFX : MonoBehaviour
     [SerializeField] float _startValue = 0; 
     [SerializeField] float _endValue = 1;
     [SerializeField] private Image _symboleImage;
+    private Material _symboleMat;
     private int _lerpAmount = Shader.PropertyToID("_Amount");
 
-    private void Start()
+    private void Awake()
     {
-        FadeInSymbol();
+        _symboleMat = _symboleImage.material;
+        _symboleMat.SetFloat(_lerpAmount, 0);
     }
 
     public void FadeInSymbol()
@@ -28,15 +30,15 @@ public class SymbolVFX : MonoBehaviour
     private IEnumerator LerpThis()
     {
         float timeElapsed = 0;
-        Material symboleMat = _symboleImage.material ;
+        
         int rand = Random.Range(0, _animationCurves.Length);
         while (timeElapsed < _lerpTime)
         {
             timeElapsed += Time.deltaTime;
-            symboleMat.SetFloat(_lerpAmount, Mathf.Lerp(0, 1, _animationCurves[rand].Evaluate(timeElapsed)/_lerpTime));
+            _symboleMat.SetFloat(_lerpAmount, Mathf.Lerp(0, 1, _animationCurves[rand].Evaluate(timeElapsed)/_lerpTime));
             yield return null;
         }
 
-        symboleMat.SetFloat(_lerpAmount, 1);
+        _symboleMat.SetFloat(_lerpAmount, 1);
     }
 }
