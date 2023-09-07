@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,6 +31,8 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] private float[] _horizontalPos;
     [HideInInspector] public bool _isTradFull = false;
     private int _currentTradNumber;
+
+    [SerializeField] private Text _traductionText;
 
     [SerializeField] private SentenceManager _sentenceManager;
 
@@ -72,6 +75,7 @@ public class DialogueBox : MonoBehaviour
         InitializeBox(numberOfSymbol);
         SetTradHorizontalGroup(numberOfSymbol);
     }
+    
 
     public void FadeOutSymbols()
     {
@@ -109,6 +113,7 @@ public class DialogueBox : MonoBehaviour
     private void SetTradHorizontalGroup(int numberOfSymbol)
     {
         _horizontalGroup.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 2] ,_boxHeight);
+        _traductionText.rectTransform.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 2], _boxHeight);
         _horizontalGroup.localPosition = new Vector2(_horizontalPos[numberOfSymbol - 2], -45);
         _horizontalGroup.GetComponent<HorizontalLayoutGroup>().spacing = _horizontalSpacing[numberOfSymbol - 2];
         _isTradFull = false;
@@ -130,6 +135,23 @@ public class DialogueBox : MonoBehaviour
         
     }
 
+    public void SetHumanTraduction(bool isCorrect)
+    {
+        _traductionText.enabled = true;
+        if (isCorrect)
+        {
+            _traductionText.text = _sentenceManager._correctSentence[_sentenceManager._currentSentence];
+        }
+        else
+        {
+            _traductionText.text = _sentenceManager._wrongSentence[_sentenceManager._currentSentence];
+        }
+    }
+
+    public void DisableHumanTraduction()
+    {
+        _traductionText.text = (" ");;
+    }
 
    
 

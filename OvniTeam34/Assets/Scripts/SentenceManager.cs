@@ -25,14 +25,17 @@ public class SentenceManager : MonoBehaviour
     private float _presidentMaxTime = 1f;
     private float _translationMaxTime = 1f;
 
-    [SerializeField] private int _currentSentence = 0;
+    public int _currentSentence = 0;
 
     private bool _isPresidentTalking = false;
     [HideInInspector] public bool _isTranslating = false;
 
     [SerializeField] private int _sentenceTestSize;
 
-    //[SerializeField] private Image _testImage;
+    [SerializeField] private Animator _presAnimator;
+    [SerializeField] private Animator _tradAnimator;
+    [SerializeField] private Animator _presBodyAnimator;
+    [SerializeField] private Animator _tradBodyAnimator;
 
     [Header("Events")]
     [Space(20)]
@@ -44,8 +47,8 @@ public class SentenceManager : MonoBehaviour
     public  List<int> _tradSentence = new List<int>();
     public  List<int> _presSentence = new List<int>();
     //[SerializeField] private List<Image> _sentence = new List<Image>();
-    [SerializeField] private string[] _correctSentence;
-    [SerializeField] private string[] _wrongSentence;
+     public string[] _correctSentence;
+     public string[] _wrongSentence;
     
     [SerializeField] private ClockTiming _clockTiming;
 
@@ -81,6 +84,18 @@ public class SentenceManager : MonoBehaviour
         }
     }
 
+    public void SetPresTalking(bool isTalking)
+    {
+        _presAnimator.SetBool("IsPresSpeaking", isTalking);
+        _presBodyAnimator.SetBool("IsAlienSpeaking", isTalking);
+    }
+    
+    public void SetTradTalking(bool isTalking)
+    {
+        _tradAnimator.SetBool("IsTradSpeaking", isTalking);
+        _tradBodyAnimator.SetBool("IsHumainSpeaking", isTalking);
+    }
+
     public void StartPresidentDialogue(int sentenceSize)
     {
         _onStartPresidentDialogue.Invoke();
@@ -104,6 +119,7 @@ public class SentenceManager : MonoBehaviour
     public void StopTranslation()
     {
         _onStopTranslation.Invoke();
+        _tradDialogueBox.SetHumanTraduction(IsTranslationCorrect);
         _isTranslating = false;
     }
 
@@ -114,7 +130,6 @@ public class SentenceManager : MonoBehaviour
         {
 
             int index = Random.Range(_symbols.Count - 1, 0);
-            //Image symbol = _symbols[index];
             int symbol = _symbols[index];
             _presSentence.Add(symbol);
         }
@@ -132,12 +147,10 @@ public class SentenceManager : MonoBehaviour
         StartTranslation(_sizeOfSentences[_currentSentence]);
         yield return new WaitForSeconds(_translationMaxTime/ _timeScale);
         StopTranslation();
-        Debug.Log(IsTranslationCorrect);
         yield return new WaitForSeconds(_afterTranslationDelay);
         
         if (_currentSentence < number - 1)
         {
-            Debug.Log(number);
             _currentSentence += 1;
             yield return GlobaLoopCoroutine(number);
         }
