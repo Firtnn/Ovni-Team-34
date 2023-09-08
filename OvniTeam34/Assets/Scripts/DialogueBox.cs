@@ -113,8 +113,8 @@ public class DialogueBox : MonoBehaviour
     private void SetTradHorizontalGroup(int numberOfSymbol)
     {
         _horizontalGroup.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 2] ,_boxHeight);
-        _traductionText.rectTransform.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 2], _boxHeight);
-        _horizontalGroup.localPosition = new Vector2(_horizontalPos[numberOfSymbol - 2], -45);
+        _traductionText.rectTransform.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 2] - 5f, _boxHeight);
+        _horizontalGroup.localPosition = new Vector2(_horizontalPos[numberOfSymbol - 2], -20);
         _horizontalGroup.GetComponent<HorizontalLayoutGroup>().spacing = _horizontalSpacing[numberOfSymbol - 2];
         _isTradFull = false;
         _sentenceManager.IsTranslationCorrect = true;

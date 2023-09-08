@@ -163,6 +163,7 @@ MonoBehaviour:
   _startValue: 0
   _endValue: 1
   _symboleImage: {fileID: 4179532969770230793}
+  _poufFX: {fileID: 3374025625099882738, guid: a3a14ccee858525429d9b3256e7f8571, type: 3}
 --- !u!114 &-8678838198231241584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19217efe7d718c4eac55bd56876d03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _imageSymbole: {fileID: 0}
+  _spriteSymbole: {fileID: 0}
   symbolVFX: {fileID: 1144931177002938039}
   Index: 0

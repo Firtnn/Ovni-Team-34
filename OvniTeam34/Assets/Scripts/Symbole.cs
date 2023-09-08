@@ -10,11 +10,13 @@ public class Symbole : MonoBehaviour
     
     public Sprite _spriteSymbole;
 
+
     
     public SymbolVFX symbolVFX;
     
     public int Index;
-    
+
+
     
 
     private void Start()
