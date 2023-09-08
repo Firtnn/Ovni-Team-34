@@ -26,18 +26,29 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DialogueBox _tradDialogueBox;
     private List<int> _symbolsInBubble = new List<int>();
 
-    
+    public float _launchingDelay;
     
     private float _voiceSpeed;
 
     public void StartGame()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
+        StartCoroutine(LancementJeuDelay(_launchingDelay));
         _menuIntroUI.SetActive(false);
         _presBox.SetActive(true);
         _clock.SetActive(true);
-        sentenceManager.GlobalLoop(_numberOfSentences);
         _isPlaying = true;
+        FindObjectOfType<AudioManager>().Stop("MusicMenu");
+        FindObjectOfType<AudioManager>().Play("Music_Jeu");
     }
+
+    IEnumerator LancementJeuDelay(float launchingDelay)
+    {
+        yield return new WaitForSeconds(launchingDelay);
+        sentenceManager.GlobalLoop(_numberOfSentences);
+    }
+
+
 
     public void TexteClignottant()
     {
@@ -66,6 +77,7 @@ public class GameManager : MonoBehaviour
         _presBox.SetActive(false);
         _clock.SetActive(false);
         TexteClignottant();
+        FindObjectOfType<AudioManager>().Play("MusicMenu");
     }
 
     private void Update()
