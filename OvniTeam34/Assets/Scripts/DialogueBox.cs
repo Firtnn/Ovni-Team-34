@@ -148,6 +148,8 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
+
+
     public void DisableHumanTraduction()
     {
         _traductionText.text = (" ");;

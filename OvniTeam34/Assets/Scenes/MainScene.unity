@@ -5757,16 +5757,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 986566760}
-        m_TargetAssemblyTypeName: VFXManager, Assembly-CSharp
-        m_MethodName: PlayPresThinkFX
-        m_Mode: 6
+      - m_Target: {fileID: 1266337646}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Yaourt6
           m_BoolArgument: 0
         m_CallState: 2
   _onStartTranslation:
@@ -5844,6 +5844,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1266337646}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: Yaourt8
+          m_BoolArgument: 1
+        m_CallState: 2
   _onStopPresidentDialogue:
     m_PersistentCalls:
       m_Calls:
@@ -5869,6 +5881,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1266337646}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Yaourt6
           m_BoolArgument: 0
         m_CallState: 2
   _onStopTranslation:
@@ -5908,6 +5932,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1266337646}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Yaourt8
           m_BoolArgument: 0
         m_CallState: 2
   _tradSentence: 
@@ -7200,7 +7236,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Yaourt6
     clip: {fileID: 8300000, guid: e287cc2f275cea744897caa0cc914ee0, type: 3}
-    loop: 0
+    loop: 1
     volume: 0.8
     pitch: 1
     source: {fileID: 0}
@@ -7212,9 +7248,9 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Yaourt8
     clip: {fileID: 8300000, guid: ea8b7a49029932940aa05f80ecd1090f, type: 3}
-    loop: 0
+    loop: 1
     volume: 0.8
-    pitch: 0
+    pitch: 1
     source: {fileID: 0}
   - name: Yaourt9
     clip: {fileID: 8300000, guid: 04e7a0bcc4ac67a48be207c0764ef284, type: 3}
