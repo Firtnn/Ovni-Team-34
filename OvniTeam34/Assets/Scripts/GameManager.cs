@@ -10,15 +10,18 @@ public class GameManager : MonoBehaviour
 {
     public SentenceManager sentenceManager;
     private float _score;
+    [SerializeField] private float _clignottementDelay;
     [SerializeField] private int _numberOfSentences;
 
     private bool _isPlaying = false;
-    private bool _isTraduction = false; 
+    private bool _isTraduction = false;
+    private bool _isTextVisible = true;
 
     private GameObject _menuIntroUI;
     private GameObject _clock;
     private GameObject _presBox;
     private GameObject _tradBox;
+    private GameObject _startText;
 
     [SerializeField] private DialogueBox _tradDialogueBox;
     private List<int> _symbolsInBubble = new List<int>();
@@ -36,7 +39,25 @@ public class GameManager : MonoBehaviour
         _isPlaying = true;
     }
 
-    private void Start()
+    public void TexteClignottant()
+    {
+        _startText = GameObject.Find("StartText");
+        _startText.SetActive(true);
+        StartCoroutine(Clignottement(_clignottementDelay));
+
+    }
+
+    IEnumerator Clignottement(float clignottementDelay)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(clignottementDelay);
+            _startText.SetActive(!_isTextVisible);
+            _isTextVisible = !_isTextVisible;
+        }
+    }
+
+        private void Start()
     {
         _menuIntroUI = GameObject.Find("IntroMenu");
         _clock = GameObject.Find("Clock");
@@ -44,6 +65,7 @@ public class GameManager : MonoBehaviour
         _tradBox = GameObject.Find("TradBox");
         _presBox.SetActive(false);
         _clock.SetActive(false);
+        TexteClignottant();
     }
 
     private void Update()
