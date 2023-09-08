@@ -48,7 +48,6 @@ public class DialogueBox : MonoBehaviour
     
     private void InitializeBox(int numberOfSymbol)
     {
-        
         _borderDialogueImage.rectTransform.sizeDelta = new Vector2(_boxWidth[numberOfSymbol - 1] ,_boxHeight);
     }
 
@@ -85,9 +84,6 @@ public class DialogueBox : MonoBehaviour
             _symboles[i].symbolVFX.FadeOut();
         }
     }
-    
-    
-    
 
 
 
@@ -128,12 +124,12 @@ public class DialogueBox : MonoBehaviour
 
     public void SetCurrentTradSymbol(int keyNumber)
     {
+        Debug.Log(keyNumber);
         _symboles[_indexTradSymbol].InitializeSymboleData(keyNumber, _data._logo[keyNumber]);
         _symboles[_indexTradSymbol].symbolVFX.FadeInSymbol();
         if (keyNumber != _sentenceManager._presSentence[_indexTradSymbol])
         {
             _sentenceManager.IsTranslationCorrect = false;
-            _sentenceManager.numberOfGoodTranslation--;
         }
         _indexTradSymbol++;
         

@@ -36,14 +36,6 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
-    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Build/OvniTeam34.exe" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\Hecto\Desktop\Build" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <method v="2" />
-    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Hecto\Documents\GitHub\Ovni-Team-34\OvniTeam34 -debugCodeOptimization" />
@@ -95,7 +87,7 @@
       <workItem from="1694071000099" duration="3947000" />
       <workItem from="1694075701203" duration="3799000" />
       <workItem from="1694099863564" duration="10911000" />
-      <workItem from="1694155404755" duration="11367000" />
+      <workItem from="1694155404755" duration="1846000" />
     </task>
     <servers />
   </component>

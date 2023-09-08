@@ -14,11 +14,6 @@ public class SentenceManager : MonoBehaviour
     [SerializeField] private DialogueBox _tradDialogueBox;
     public bool IsTranslationCorrect;
 
-    [SerializeField] private GameManager _gameManager;
-
-    [HideInInspector]
-    public int numberOfGoodTranslation;
-
     [SerializeField]private List<int> _sizeOfSentences = new List<int>();
 
     [SerializeField] private float _timeScale;
@@ -61,7 +56,6 @@ public class SentenceManager : MonoBehaviour
 
     void Start()
     {
-        numberOfGoodTranslation = 12;
         for (int i = 0; i < _numberOfSymbols; i++)
         {
             //_symbols.Add(_testImage);
@@ -162,15 +156,10 @@ public class SentenceManager : MonoBehaviour
         StopTranslation();
         yield return new WaitForSeconds(_afterTranslationDelay);
         
-        
         if (_currentSentence < number - 1)
         {
             _currentSentence += 1;
             yield return GlobaLoopCoroutine(number);
-        }
-        else
-        {
-            _gameManager.IsGameOver();
         }
     }
 }
