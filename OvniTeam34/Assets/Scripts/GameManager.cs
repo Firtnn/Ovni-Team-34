@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
-using static UnityEngine.InputManagerEntry;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +21,9 @@ public class GameManager : MonoBehaviour
     private GameObject _presBox;
     private GameObject _tradBox;
     private GameObject _startText;
+
+    [SerializeField] private GameObject _endMenu;
+    [SerializeField] private GameOverBehavior _gameOverBehavior;
 
     [SerializeField] private DialogueBox _tradDialogueBox;
     private List<int> _symbolsInBubble = new List<int>();
@@ -85,6 +87,21 @@ public class GameManager : MonoBehaviour
         if (!_isPlaying && Input.anyKey)
         {
             StartGame(); 
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            _endMenu.SetActive(true);
+            _isPlaying = false;
+            if (sentenceManager.numberOfGoodTranslation > 5)
+            {
+                _gameOverBehavior.SetVictoryDefeat(false);
+            }
+            else
+            {
+                
+                _gameOverBehavior.SetVictoryDefeat(true);
+            }
         }
 
         if (_isPlaying && sentenceManager._isTranslating && !_tradDialogueBox._isTradFull )
@@ -188,5 +205,24 @@ public class GameManager : MonoBehaviour
             }
             _tradDialogueBox.CheckIsFull();
         }
+    }
+
+    public void IsGameOver()
+    {
+        Debug.Log(sentenceManager._currentSentence == 12);
+      
+        
+            _endMenu.SetActive(true);
+            _isPlaying = false;
+            if (sentenceManager.numberOfGoodTranslation > 5)
+            {
+                _gameOverBehavior.SetVictoryDefeat(false);
+            }
+            else
+            {
+                
+                _gameOverBehavior.SetVictoryDefeat(true);
+            }
+        
     }
 }
