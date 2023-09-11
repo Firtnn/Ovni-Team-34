@@ -132,6 +132,7 @@ public class DialogueBox : MonoBehaviour
         _symboles[_indexTradSymbol].symbolVFX.FadeInSymbol();
         if (keyNumber != _sentenceManager._presSentence[_indexTradSymbol])
         {
+            
             _sentenceManager.IsTranslationCorrect = false;
             _sentenceManager.numberOfGoodTranslation--;
         }

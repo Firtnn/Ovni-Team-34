@@ -89,29 +89,17 @@ public class GameManager : MonoBehaviour
             StartGame(); 
         }
 
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            _endMenu.SetActive(true);
-            _isPlaying = false;
-            if (sentenceManager.numberOfGoodTranslation > 5)
-            {
-                _gameOverBehavior.SetVictoryDefeat(false);
-            }
-            else
-            {
-                
-                _gameOverBehavior.SetVictoryDefeat(true);
-            }
-        }
+       
+    
 
         if (_isPlaying && sentenceManager._isTranslating && !_tradDialogueBox._isTradFull )
         {
             
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(0);
             }
-            else if (Input.GetKeyDown(KeyCode.Z))
+            else if (Input.GetKeyDown(KeyCode.W))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(1);
             }
@@ -139,67 +127,67 @@ public class GameManager : MonoBehaviour
             {
                 _tradDialogueBox.SetCurrentTradSymbol(7);
             }
-            else if (Input.GetKeyDown(KeyCode.O))
+            else if (Input.GetKeyDown(KeyCode.A))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(8);
             }
-            else if (Input.GetKeyDown(KeyCode.P))
+            else if (Input.GetKeyDown(KeyCode.S))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(9);
             }
-            else if (Input.GetKeyDown(KeyCode.Q))
+            else if (Input.GetKeyDown(KeyCode.D))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(10);
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKeyDown(KeyCode.F))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(11);
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(KeyCode.G))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(12);
             }
-            else if (Input.GetKeyDown(KeyCode.F))
+            else if (Input.GetKeyDown(KeyCode.H))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(13);
             }
-            else if (Input.GetKeyDown(KeyCode.G))
+            else if (Input.GetKeyDown(KeyCode.J))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(14);
             }
-            else if (Input.GetKeyDown(KeyCode.H))
+            else if (Input.GetKeyDown(KeyCode.K))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(15);
             }
-            else if (Input.GetKeyDown(KeyCode.J))
+            else if (Input.GetKeyDown(KeyCode.Z))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(16);
             }
-            else if (Input.GetKeyDown(KeyCode.K))
+            else if (Input.GetKeyDown(KeyCode.X))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(17);
             }
-            else if (Input.GetKeyDown(KeyCode.L))
+            else if (Input.GetKeyDown(KeyCode.C))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(18);
             }
-            else if (Input.GetKeyDown(KeyCode.M))
+            else if (Input.GetKeyDown(KeyCode.V))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(19);
             }
-            else if (Input.GetKeyDown(KeyCode.W))
+            else if (Input.GetKeyDown(KeyCode.B))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(20);
             }
-            else if (Input.GetKeyDown(KeyCode.X))
+            else if (Input.GetKeyDown(KeyCode.N))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(21);
             }
-            else if (Input.GetKeyDown(KeyCode.C))
+            else if (Input.GetKeyDown(KeyCode.O))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(22);
             }
-            else if (Input.GetKeyDown(KeyCode.V))
+            else if (Input.GetKeyDown(KeyCode.P))
             {
                 _tradDialogueBox.SetCurrentTradSymbol(23);
             }
@@ -210,7 +198,6 @@ public class GameManager : MonoBehaviour
     public void IsGameOver()
     {
         Debug.Log(sentenceManager._currentSentence == 12);
-      
         
             _endMenu.SetActive(true);
             _isPlaying = false;
